@@ -1,7 +1,7 @@
-package com.valeriotor.beyondtheveil.world;
+package com.eternatus.modTest.world;
 
 import com.google.gson.*;
-import com.valeriotor.beyondtheveil.BeyondTheVeil;
+import com.eternatus.modtest.ModTest;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
