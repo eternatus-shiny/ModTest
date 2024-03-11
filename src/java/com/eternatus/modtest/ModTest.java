@@ -1,26 +1,26 @@
-package com.valeriotor.beyondtheveil;
+package com.eternatus.modtest;
 
 import com.google.gson.Gson;
 import com.mojang.serialization.Codec;
-import com.valeriotor.beyondtheveil.client.ClientSetup;
-import com.valeriotor.beyondtheveil.event.HamletDwellerEvent;
-import com.valeriotor.beyondtheveil.event.ModEvents;
-import com.valeriotor.beyondtheveil.lib.BiomeConfig;
-import com.valeriotor.beyondtheveil.lib.ConfigLib;
-import com.valeriotor.beyondtheveil.lib.References;
-import com.valeriotor.beyondtheveil.networking.Messages.UpdateCaveBiomeMapTagMessage;
-import com.valeriotor.beyondtheveil.networking.Messages.UpdateItemTagMessage;
-import com.valeriotor.beyondtheveil.networking.Messages.WorldEventMessage;
-import com.valeriotor.beyondtheveil.networking.proxy.CommonProxy;
-import com.valeriotor.beyondtheveil.networking.proxy.ClientProxy;
-import com.valeriotor.beyondtheveil.util.ExpandedBiomeSource;
-import com.valeriotor.beyondtheveil.util.ExpandedBiomes;
-import com.valeriotor.beyondtheveil.util.VillageHouseManager;
-import com.valeriotor.beyondtheveil.world.biome.BTVBiomeRarity;
-import com.valeriotor.beyondtheveil.world.biome.BTVBiomeRegistry;
-import com.valeriotor.beyondtheveil.world.carver.BTVCarverRegistry;
-import com.valeriotor.beyondtheveil.world.feature.BTVFeatureRegistry;
-import com.valeriotor.beyondtheveil.world.worldgen.surface.BTVSurfaceRules;
+import com.eternatus.modtest.client.ClientSetup;
+import com.eternatus.modtest.event.HamletDwellerEvent;
+import com.eternatus.modtest.event.ModEvents;
+import com.eternatus.modtest.lib.BiomeConfig;
+import com.eternatus.modtest.lib.ConfigLib;
+import com.eternatus.modtest.lib.References;
+import com.eternatus.modtest.networking.Messages.UpdateCaveBiomeMapTagMessage;
+import com.eternatus.modtest.networking.Messages.UpdateItemTagMessage;
+import com.eternatus.modtest.networking.Messages.WorldEventMessage;
+import com.eternatus.modtest.networking.proxy.CommonProxy;
+import com.eternatus.modtest.networking.proxy.ClientProxy;
+import com.eternatus.modtest.util.ExpandedBiomeSource;
+import com.eternatus.modtest.util.ExpandedBiomes;
+import com.eternatus.modtest.util.VillageHouseManager;
+import com.eternatus.modtest.world.biome.MTBiomeRarity;
+import com.eternatus.modtest.world.biome.MTBiomeRegistry;
+import com.eternatus.modtest.world.carver.MTCarverRegistry;
+import com.eternatus.modtest.world.feature.MTFeatureRegistry;
+import com.eternatus.modtest.world.worldgen.surface.MTSurfaceRules;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
@@ -59,8 +59,8 @@ import java.util.Optional;
 import java.util.Set;
 
 @Mod(References.MODID)
-public class BeyondTheVeil{
-    public static final Logger LOGGER = LogManager.getLogger("beyondtheveil");
+public class ModTest{
+    public static final Logger LOGGER = LogManager.getLogger("modtest");
     public static final Gson GSON = new Gson();
     public static final String MODID = "";
     private static final String PROTOCOL_VERSION = Integer.toString(1);
@@ -86,13 +86,13 @@ public class BeyondTheVeil{
         bus.addListener(this::clientSetup);
         bus.addListener(this::loadConfig);
         bus.addListener(this::reloadConfig);
-        BTVFeatureRegistry.DEF_REG.register(bus);
-        BTVCarverRegistry.DEF_REG.register(bus);
+        MTFeatureRegistry.DEF_REG.register(bus);
+        MTCarverRegistry.DEF_REG.register(bus);
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(new ModEvents());
         MinecraftForge.EVENT_BUS.register(PROXY);
         PROXY.commonInit();
-        BTVBiomeRegistry.init();
+        MTBiomeRegistry.init();
 
         //CONFIG
 //        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigLib.SPEC, References.MODID + "-common.toml");
@@ -112,7 +112,7 @@ public class BeyondTheVeil{
         NETWORK_WRAPPER.registerMessage(packetsRegistered++, UpdateCaveBiomeMapTagMessage.class, UpdateCaveBiomeMapTagMessage::write, UpdateCaveBiomeMapTagMessage::read, UpdateCaveBiomeMapTagMessage::handle);
         NETWORK_WRAPPER.registerMessage(packetsRegistered++, WorldEventMessage.class, WorldEventMessage::write, WorldEventMessage::read, WorldEventMessage::handle);
         event.enqueueWork(() ->{
-            BTVSurfaceRules.setup();
+            MTSurfaceRules.setup();
         });
     }
     private void enqueueIMC(final InterModEnqueueEvent event){
@@ -150,8 +150,8 @@ public class BeyondTheVeil{
 
     @SubscribeEvent
     public void onServerAboutToStart(ServerAboutToStartEvent event) {
-        BeyondTheVeil.LOGGER.info("Init BTVBiomeRarity");
-        BTVBiomeRarity.init();
+        ModTest.LOGGER.info("Init MTBiomeRarity");
+        MTBiomeRarity.init();
         RegistryAccess registryAccess = event.getServer().registryAccess();
         VillageHouseManager.addAllHouses(registryAccess);
         Registry<Biome> allBiomes = registryAccess.registryOrThrow(Registry.BIOME_REGISTRY);
