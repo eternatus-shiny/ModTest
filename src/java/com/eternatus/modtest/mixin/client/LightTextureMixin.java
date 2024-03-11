@@ -1,7 +1,7 @@
-package com.valeriotor.beyondtheveil.mixin.client;
+package com.eternatus.modtest.mixin.client;
 import com.mojang.blaze3d.platform.NativeImage;
-import com.valeriotor.beyondtheveil.lib.ConfigLib;
-import com.valeriotor.beyondtheveil.networking.proxy.ClientProxy;
+import com.eternatus.modtest.lib.ConfigLib;
+import com.eternatus.modtest.networking.proxy.ClientProxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.GameRenderer;

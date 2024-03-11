@@ -1,6 +1,6 @@
-package com.valeriotor.beyondtheveil.mixin;
+package com.eternatus.modtest.mixin;
 
-import com.valeriotor.beyondtheveil.Constants;
+import com.eternatus.modtest.Constants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.util.random.WeightedRandomList;

@@ -1,4 +1,4 @@
-package com.valeriotor.beyondtheveil.world.feature;
+package com.eternatus.modtest.world.feature;
 
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;

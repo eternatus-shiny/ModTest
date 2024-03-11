@@ -1,6 +1,6 @@
-package com.valeriotor.beyondtheveil.world.carver;
+package com.eternatus.modtest.world.carver;
 
-import com.valeriotor.beyondtheveil.lib.References;
+import com.eternatus.modtest.lib.References;
 import net.minecraft.world.level.levelgen.carver.CaveCarverConfiguration;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraftforge.registries.DeferredRegister;

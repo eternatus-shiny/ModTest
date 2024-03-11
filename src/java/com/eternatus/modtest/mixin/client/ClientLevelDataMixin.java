@@ -1,6 +1,6 @@
-package com.valeriotor.beyondtheveil.mixin.client;
+package com.eternatus.modtest.mixin.client;
 
-import com.valeriotor.beyondtheveil.lib.ConfigLib;
+import com.eternatus.modtest.lib.ConfigLib;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.world.level.LevelHeightAccessor;
 import org.spongepowered.asm.mixin.Mixin;

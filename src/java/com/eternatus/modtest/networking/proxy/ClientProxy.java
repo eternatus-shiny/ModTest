@@ -1,4 +1,4 @@
-package com.valeriotor.beyondtheveil.networking.proxy;
+package com.eternatus.modtest.networking.proxy;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -6,9 +6,9 @@ import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import com.valeriotor.beyondtheveil.BeyondTheVeil;
-import com.valeriotor.beyondtheveil.client.event.ClientEvents;
-import com.valeriotor.beyondtheveil.client.render.item.BTVItemRenderProperties;
+import com.eternatus.modtest.ModTest;
+import com.eternatus.modtest.client.event.ClientEvents;
+import com.eternatus.modtest.client.render.item.BTVItemRenderProperties;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.client.CameraType;

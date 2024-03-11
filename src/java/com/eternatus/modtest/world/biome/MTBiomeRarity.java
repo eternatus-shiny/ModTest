@@ -1,11 +1,11 @@
-package com.valeriotor.beyondtheveil.world.biome;
+package com.eternatus.modtest.world.biome;
 
 import com.google.common.collect.ImmutableList;
-import com.valeriotor.beyondtheveil.BeyondTheVeil;
-import com.valeriotor.beyondtheveil.lib.BiomeConfig;
-import com.valeriotor.beyondtheveil.lib.ConfigLib;
-import com.valeriotor.beyondtheveil.util.MathHelperBTV;
-import com.valeriotor.beyondtheveil.util.VoronoiGenerator;
+import com.eternatus.modtest.ModTest;
+import com.eternatus.modtest.lib.BiomeConfig;
+import com.eternatus.modtest.lib.ConfigLib;
+import com.eternatus.modtest.util.MathHelperBTV;
+import com.eternatus.modtest.util.VoronoiGenerator;
 import net.minecraft.core.QuartPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
@@ -15,7 +15,7 @@ import org.checkerframework.checker.units.qual.C;
 
 import javax.annotation.Nullable;
 import java.util.List;
-public class BTVBiomeRarity {
+public class MTBiomeRarity {
 
     private static long lastTestedSeed = 0;
     private static final List<Integer> BIOME_OCTAVES = ImmutableList.of(0);
@@ -33,7 +33,7 @@ public class BTVBiomeRarity {
         VORONOI_GENERATOR.setOffsetAmount(ConfigLib.caveBiomeSpacingRandomness.get());
         biomeSize = ConfigLib.caveBiomeMeanWidth.get() * 0.25D;
         seperationDistance = biomeSize + ConfigLib.caveBiomeMeanSeparation.get() * 0.25D;
-        BeyondTheVeil.LOGGER.info("BTVBiomeRatity Init!");
+        modtest.LOGGER.info("BTVBiomeRatity Init!");
     }
 
     /**

@@ -1,9 +1,9 @@
-package com.valeriotor.beyondtheveil.client.render;
+package com.eternatus.modtest.client.render;
 
 import net.minecraft.client.renderer.ShaderInstance;
 
 import javax.annotation.Nullable;
-public class BTVInternalShaders {
+public class MTInternalShaders {
     private static ShaderInstance renderTypeSepiaShader;
 
     @Nullable

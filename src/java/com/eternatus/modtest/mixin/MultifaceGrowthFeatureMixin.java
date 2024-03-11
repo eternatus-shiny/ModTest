@@ -1,6 +1,6 @@
-package com.valeriotor.beyondtheveil.mixin;
-import com.valeriotor.beyondtheveil.world.biome.BTVBiomeRegistry;
-import com.valeriotor.beyondtheveil.world.feature.FeaturePositionValidator;
+package com.eternatus.modtest.mixin;
+import com.eternatus.modtest.world.biome.MTBiomeRegistry;
+import com.eternatus.modtest.world.feature.FeaturePositionValidator;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.MultifaceGrowthFeature;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,7 +16,7 @@ public class MultifaceGrowthFeatureMixin {
             at = @At(value = "HEAD")
     )
     private void ac_place(FeaturePlaceContext context, CallbackInfoReturnable<Boolean> cir) {
-        if (FeaturePositionValidator.isBiome(context, BTVBiomeRegistry.ABYSSAL_CHASM)) {
+        if (FeaturePositionValidator.isBiome(context, MTBiomeRegistry.ABYSSAL)) {
             cir.cancel();
         }
     }

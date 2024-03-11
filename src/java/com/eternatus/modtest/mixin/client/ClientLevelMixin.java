@@ -1,7 +1,7 @@
-package com.valeriotor.beyondtheveil.mixin.client;
+package com.eternatus.modtest.mixin.client;
 
-import com.valeriotor.beyondtheveil.lib.ConfigLib;
-import com.valeriotor.beyondtheveil.networking.proxy.ClientProxy;
+import com.eternatus.modtest.lib.ConfigLib;
+import com.eternatus.modtest.networking.proxy.ClientProxy;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.Holder;
 import net.minecraft.core.RegistryAccess;

@@ -1,11 +1,11 @@
-package com.valeriotor.beyondtheveil.item;
+package com.valeriotor.modtest.item;
 
-import com.valeriotor.beyondtheveil.BeyondTheVeil;
-import com.valeriotor.beyondtheveil.Registration;
-import com.valeriotor.beyondtheveil.networking.Messages.Messages;
-import com.valeriotor.beyondtheveil.networking.Messages.UpdateItemTagMessage;
-import com.valeriotor.beyondtheveil.world.biome.BTVBiomeRegistry;
-import com.valeriotor.beyondtheveil.world.storage.BTVWorldData;
+import com.valeriotor.modtest.ModTest;
+import com.valeriotor.modtest.Registration;
+import com.valeriotor.modtest.networking.Messages.Messages;
+import com.valeriotor.modtest.networking.Messages.UpdateItemTagMessage;
+import com.valeriotor.modtest.world.biome.MTBiomeRegistry;
+import com.valeriotor.modtest.world.storage.MTWorldData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -42,7 +42,7 @@ public class CaveMapItem extends Item implements UpdateStackTags{
 
     @Override
     public void initializeClient(java.util.function.Consumer<IClientItemExtensions> consumer) {
-        consumer.accept((IClientItemExtensions) BeyondTheVeil.PROXY.getISTERProperties());
+        consumer.accept((IClientItemExtensions) ModTest.PROXY.getISTERProperties());
     }
 
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
@@ -54,13 +54,13 @@ public class CaveMapItem extends Item implements UpdateStackTags{
                 if (!tag.contains("MapUUID")) {
                     uuid = UUID.randomUUID();
                     tag.putUUID("MapUUID", uuid);
-                    BeyondTheVeil.sendMSGToAll(new UpdateItemTagMessage(player.getId(), itemstack));
+                    ModTest.sendMSGToAll(new UpdateItemTagMessage(player.getId(), itemstack));
                 }else{
                     uuid = tag.getUUID("MapUUID");
                 }
                 tag.putBoolean("Loading", true);
                 itemstack.setTag(tag);
-                BTVWorldData acWorldData = BTVWorldData.get(level);
+                MTWorldData acWorldData = MTWorldData.get(level);
                 if (acWorldData != null) {
                     acWorldData.fillOutCaveMap(uuid, itemstack, (ServerLevel) level, player.getRootVehicle().blockPosition(), player);
                 }
@@ -103,20 +103,20 @@ public class CaveMapItem extends Item implements UpdateStackTags{
                 ResourceKey<Biome> biomeResourceKey = getBiomeTarget(stack);
                 Holder<Biome> currentBiome = level.getBiome(biomePos);
                 if(biomeResourceKey == null || !currentBiome.is(biomeResourceKey)){
-                    BTVWorldData acWorldData = BTVWorldData.get(level);
+                    MTWorldData acWorldData = MTWorldData.get(level);
                     if (acWorldData != null) {
                         UUID uuid;
                         CompoundTag tag = stack.getOrCreateTag();
                         if (!tag.contains("MapUUID")) {
                             uuid = UUID.randomUUID();
                             tag.putUUID("MapUUID", uuid);
-                            BeyondTheVeil.sendMSGToAll(new UpdateItemTagMessage(entity.getId(), stack));
+                            ModTest.sendMSGToAll(new UpdateItemTagMessage(entity.getId(), stack));
                         }else{
                             uuid = tag.getUUID("MapUUID");
                         }
                         String currentBiomeName = currentBiome.unwrapKey().isPresent() ? currentBiome.unwrapKey().get().location().toString() : "NULL";
                         String wantedBiomeName = biomeResourceKey == null ? "NULL" : biomeResourceKey.location().toString();
-                        BeyondTheVeil.LOGGER.info("regenerating cave biome map, incorrect biome {} found at {} {} {}, should be {}", currentBiomeName, biomePos.getX(), biomePos.getY(), biomePos.getZ(), wantedBiomeName);
+                        ModTest.LOGGER.info("regenerating cave biome map, incorrect biome {} found at {} {} {}, should be {}", currentBiomeName, biomePos.getX(), biomePos.getY(), biomePos.getZ(), wantedBiomeName);
                         acWorldData.fillOutCaveMap(uuid, stack, (ServerLevel) level, entity.getRootVehicle().blockPosition(), (Player)entity);
                     }
                 }
@@ -162,6 +162,6 @@ public class CaveMapItem extends Item implements UpdateStackTags{
     }
 
     public static ResourceKey<Biome> getBiomeTarget(ItemStack stack) {
-        return BTVBiomeRegistry.ABYSSAL_CHASM;
+        return MTBiomeRegistry.ABYSSAL_CHASM;
     }
 }

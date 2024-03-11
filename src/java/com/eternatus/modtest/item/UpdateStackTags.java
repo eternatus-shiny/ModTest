@@ -1,4 +1,4 @@
-package com.valeriotor.beyondtheveil.item;
+package com.eternatus.modtest.item;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;

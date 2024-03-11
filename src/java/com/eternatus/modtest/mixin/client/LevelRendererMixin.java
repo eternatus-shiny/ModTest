@@ -1,12 +1,12 @@
-package com.valeriotor.beyondtheveil.mixin.client;
+package com.eternatus.modtest.mixin.client;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Vector3f;
 import com.mojang.math.Matrix4f;
-import com.valeriotor.beyondtheveil.BeyondTheVeil;
-import com.valeriotor.beyondtheveil.lib.ConfigLib;
-import com.valeriotor.beyondtheveil.networking.proxy.ClientProxy;
+import com.eternatus.modtest.ModTest;
+import com.eternatus.modtest.lib.ConfigLib;
+import com.eternatus.modtest.networking.proxy.ClientProxy;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;

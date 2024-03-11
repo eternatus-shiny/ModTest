@@ -1,10 +1,10 @@
-package com.valeriotor.beyondtheveil.mixin;
+package com.eternatus.modtest.mixin;
 
 import com.mojang.datafixers.util.Pair;
-import com.valeriotor.beyondtheveil.Constants;
-import com.valeriotor.beyondtheveil.util.EventReplaceBiome;
-import com.valeriotor.beyondtheveil.util.ExpandedBiomeSource;
-import com.valeriotor.beyondtheveil.util.IMultiNoiseBiomeSourceAccesor;
+import com.eternatus.modtest.Constants;
+import com.eternatus.modtest.util.EventReplaceBiome;
+import com.eternatus.modtest.util.ExpandedBiomeSource;
+import com.eternatus.modtest.util.IMultiNoiseBiomeSourceAccesor;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;

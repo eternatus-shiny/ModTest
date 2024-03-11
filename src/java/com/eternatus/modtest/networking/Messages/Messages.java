@@ -1,11 +1,10 @@
-package com.valeriotor.beyondtheveil.networking.Messages;
+package com.eternatus.modtest.networking.Messages;
 
-//import com.valeriotor.beyondtheveil.block.FlaskShelfBlock;
-import com.valeriotor.beyondtheveil.BeyondTheVeil;
-import com.valeriotor.beyondtheveil.Registration;
-import com.valeriotor.beyondtheveil.item.UpdateStackTags;
-import com.valeriotor.beyondtheveil.lib.References;
-import com.valeriotor.beyondtheveil.networking.*;
+import com.eternatus.modtest.ModTest;
+import com.eternatus.modtest.Registration;
+import com.eternatus.modtest.item.UpdateStackTags;
+import com.eternatus.modtest.lib.References;
+import com.eternatus.modtest.networking.*;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
@@ -37,62 +36,6 @@ public class Messages {
     private static int id() {
         return packetId++;
     }
-
-    public static void register() {
-        SimpleChannel net = NetworkRegistry.ChannelBuilder
-                .named(new ResourceLocation(References.MODID, "messages"))
-                .networkProtocolVersion(() -> "1.0")
-                .clientAcceptedVersions(s -> true)
-                .serverAcceptedVersions(s -> true)
-                .simpleChannel();
-
-        INSTANCE = net;
-
-        net.messageBuilder(SyncResearchToClientPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(SyncResearchToClientPacket::new)
-                .encoder(SyncResearchToClientPacket::toBytes)
-                .consumerNetworkThread(SyncResearchToClientPacket::handle)
-                .add();
-        net.messageBuilder(SyncResearchToServerPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(SyncResearchToServerPacket::new)
-                .encoder(SyncResearchToServerPacket::toBytes)
-                .consumerNetworkThread(SyncResearchToServerPacket::handle)
-                .add();
-
-        net.messageBuilder(SyncPlayerDataPacket.ToClient.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(SyncPlayerDataPacket.ToClient::new)
-                .encoder(SyncPlayerDataPacket.ToClient::toBytes)
-                .consumerNetworkThread(SyncPlayerDataPacket.ToClient::handle)
-                .add();
-        net.messageBuilder(SyncPlayerDataPacket.ToServer.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(SyncPlayerDataPacket.ToServer::new)
-                .encoder(SyncPlayerDataPacket.ToServer::toBytes)
-                .consumerNetworkThread(SyncPlayerDataPacket.ToServer::handle)
-                .add();
-
-        net.messageBuilder(SyncAllPlayerDataToClientPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(SyncAllPlayerDataToClientPacket::new)
-                .encoder(SyncAllPlayerDataToClientPacket::toBytes)
-                .consumerNetworkThread(SyncAllPlayerDataToClientPacket::handle)
-                .add();
-
-        net.messageBuilder(GenericToServerPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(GenericToServerPacket::new)
-                .encoder(GenericToServerPacket::toBytes)
-                .consumerNetworkThread(GenericToServerPacket::handle)
-                .add();
-
-        net.messageBuilder(GenericToClientPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(GenericToClientPacket::new)
-                .encoder(GenericToClientPacket::toBytes)
-                .consumerNetworkThread(GenericToClientPacket::handle)
-                .add();
-
-//        net.messageBuilder(FlaskShelfBlock.BreakFlaskMessage.class, id(), NetworkDirection.PLAY_TO_SERVER)
-//                .decoder(FlaskShelfBlock.BreakFlaskMessage::new)
-//                .encoder(FlaskShelfBlock.BreakFlaskMessage::toBytes)
-//                .consumerNetworkThread(FlaskShelfBlock.BreakFlaskMessage::handle)
-//                .add();
 
     }
 

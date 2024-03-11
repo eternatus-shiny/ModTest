@@ -1,6 +1,6 @@
-package com.valeriotor.beyondtheveil.world.feature;
+package com.eternatus.modtest.world.feature;
 
-import com.valeriotor.beyondtheveil.world.feature.config.FillBiomeAboveConfiguration;
+import com.eternatus.modtest.world.feature.config.FillBiomeAboveConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -11,7 +11,7 @@ import net.minecraft.world.level.chunk.LevelChunkSection;
 import net.minecraft.world.level.chunk.PalettedContainer;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import com.valeriotor.beyondtheveil.util.ILevelChunkSectionMixin;
+import com.eternatus.modtest.util.ILevelChunkSectionMixin;
 
 public class FillBiomeAboveFeature extends Feature<FillBiomeAboveConfiguration> {
     public FillBiomeAboveFeature(Codec<FillBiomeAboveConfiguration> codec) {

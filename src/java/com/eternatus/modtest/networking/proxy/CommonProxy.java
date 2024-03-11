@@ -1,4 +1,4 @@
-package com.valeriotor.beyondtheveil.networking.proxy;
+package com.eternatus.modtest.networking.proxy;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;

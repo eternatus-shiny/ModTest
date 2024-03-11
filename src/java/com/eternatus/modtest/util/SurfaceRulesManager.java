@@ -1,4 +1,4 @@
-package com.valeriotor.beyondtheveil.util;
+package com.eternatus.modtest.util;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,11 +1,11 @@
-package com.valeriotor.beyondtheveil.client.event;
+package com.eternarus.modtest.client.event;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.valeriotor.beyondtheveil.BeyondTheVeil;
-import com.valeriotor.beyondtheveil.lib.ConfigLib;
-import com.valeriotor.beyondtheveil.networking.proxy.ClientProxy;
-import com.valeriotor.beyondtheveil.util.BiomeSampler;
-import com.valeriotor.beyondtheveil.world.biome.BTVBiomeRegistry;
+import com.eternarus.modtest.ModTest;
+import com.eternarus.modtest.lib.ConfigLib;
+import com.eternarus.modtest.networking.proxy.ClientProxy;
+import com.eternarus.modtest.util.BiomeSampler;
+import com.eternarus.modtest.world.biome.MTBiomeRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.FogRenderer;
@@ -89,18 +89,18 @@ public class ClientEvents {
     private static float calculateBiomeAmbientLight(Entity player) {
         int i = Minecraft.getInstance().options.biomeBlendRadius().get();
         if (i == 0) {
-            return BTVBiomeRegistry.getBiomeAmbientLight(player.getLevel().getBiome(player.blockPosition()));
+            return MTBiomeRegistry.getBiomeAmbientLight(player.getLevel().getBiome(player.blockPosition()));
         } else {
-            return BiomeSampler.sampleBiomesFloat(player.getLevel(), player.position(), BTVBiomeRegistry::getBiomeAmbientLight);
+            return BiomeSampler.sampleBiomesFloat(player.getLevel(), player.position(), MTBiomeRegistry::getBiomeAmbientLight);
         }
     }
 
     private static Vec3 calculateBiomeLightColor(Entity player) {
         int i = Minecraft.getInstance().options.biomeBlendRadius().get();
         if (i == 0) {
-            return BTVBiomeRegistry.getBiomeLightColorOverride(player.getLevel().getBiome(player.blockPosition()));
+            return MTBiomeRegistry.getBiomeLightColorOverride(player.getLevel().getBiome(player.blockPosition()));
         } else {
-            return BiomeSampler.sampleBiomesVec3(player.getLevel(), player.position(), BTVBiomeRegistry::getBiomeLightColorOverride);
+            return BiomeSampler.sampleBiomesVec3(player.getLevel(), player.position(), MTBiomeRegistry::getBiomeLightColorOverride);
         }
     }
 
@@ -108,9 +108,9 @@ public class ClientEvents {
         int i = Minecraft.getInstance().options.biomeBlendRadius().get();
         float nearness;
         if (i == 0) {
-            nearness = BTVBiomeRegistry.getBiomeFogNearness(player.getLevel().getBiome(player.blockPosition()));
+            nearness = MTBiomeRegistry.getBiomeFogNearness(player.getLevel().getBiome(player.blockPosition()));
         } else {
-            nearness = BiomeSampler.sampleBiomesFloat(player.getLevel(), player.position(), BTVBiomeRegistry::getBiomeFogNearness);
+            nearness = BiomeSampler.sampleBiomesFloat(player.getLevel(), player.position(), MTBiomeRegistry::getBiomeFogNearness);
         }
         return nearness;
     }
@@ -119,9 +119,9 @@ public class ClientEvents {
         int i = Minecraft.getInstance().options.biomeBlendRadius().get();
         float farness;
         if (i == 0) {
-            farness = BTVBiomeRegistry.getBiomeWaterFogFarness(player.getLevel().getBiome(player.blockPosition()));
+            farness = MTBiomeRegistry.getBiomeWaterFogFarness(player.getLevel().getBiome(player.blockPosition()));
         } else {
-            farness = BiomeSampler.sampleBiomesFloat(player.getLevel(), player.position(), BTVBiomeRegistry::getBiomeWaterFogFarness);
+            farness = BiomeSampler.sampleBiomesFloat(player.getLevel(), player.position(), MTBiomeRegistry::getBiomeWaterFogFarness);
         }
         return farness;
     }
@@ -152,12 +152,12 @@ public class ClientEvents {
     public void onClientTick(TickEvent.ClientTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
             Entity cameraEntity = Minecraft.getInstance().cameraEntity;
-            float partialTicks = BeyondTheVeil.PROXY.getPartialTicks();
+            float partialTicks = ModTest.PROXY.getPartialTicks();
             if (ClientProxy.shaderLoadAttemptCooldown > 0) {
                 ClientProxy.shaderLoadAttemptCooldown--;
             }
             if (cameraEntity != null) {
-                ClientProxy.acSkyOverrideAmount = BTVBiomeRegistry.calculateBiomeSkyOverride(cameraEntity);
+                ClientProxy.acSkyOverrideAmount = MTBiomeRegistry.calculateBiomeSkyOverride(cameraEntity);
                 if (ClientProxy.acSkyOverrideAmount > 0) {
                     ClientProxy.acSkyOverrideColor = BiomeSampler.sampleBiomesVec3(Minecraft.getInstance().level, Minecraft.getInstance().cameraEntity.position(), biomeHolder -> Vec3.fromRGB24(biomeHolder.value().getSkyColor()));
                 }

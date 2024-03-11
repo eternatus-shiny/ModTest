@@ -1,7 +1,7 @@
-package com.valeriotor.beyondtheveil.util;
+package com.eternatus.modtest.util;
 
 import com.mojang.datafixers.util.Pair;
-import com.valeriotor.beyondtheveil.BeyondTheVeil;
+import com.eternatus.modtest.ModTest;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
@@ -24,7 +24,7 @@ public class VillageHouseManager {
 
     public static void register(String pool, Consumer<StructureTemplatePool> addToPool) {
         REGISTRY.add(new Pair<>(pool, addToPool));
-        BeyondTheVeil.LOGGER.debug("registered addition to pool: " + pool);
+        ModTest.LOGGER.debug("registered addition to pool: " + pool);
     }
 
     public static StructureTemplatePool addToPool(StructureTemplatePool pool, StructurePoolElement element, int weight) {
@@ -39,7 +39,7 @@ public class VillageHouseManager {
                     rawTemplates.add(new Pair<>(element, weight));
                     pool.templates = templates;
                     pool.rawTemplates = rawTemplates;
-                    BeyondTheVeil.LOGGER.info("Added to village structure pool");
+                    ModTest.LOGGER.info("Added to village structure pool");
                 }
             }
         }
@@ -52,7 +52,7 @@ public class VillageHouseManager {
                 StructureTemplatePool pool = registryAccess.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY).getOptional(new ResourceLocation(villagePool)).orElse(null);
                 if(pool != null){
                     String poolName = pool.getName().toString();
-                    BeyondTheVeil.LOGGER.info("Add All Houses: "+poolName);
+                    ModTest.LOGGER.info("Add All Houses: "+poolName);
                     for (Pair<String, Consumer<StructureTemplatePool>> pair : REGISTRY) {
                         if (poolName.equals(pair.getFirst())) {
                             pair.getSecond().accept(pool);
@@ -61,7 +61,7 @@ public class VillageHouseManager {
                 }
             }
         }catch (Exception e){
-            BeyondTheVeil.LOGGER.error("Could not add village houses!");
+            ModTest.LOGGER.error("Could not add village houses!");
             e.printStackTrace();
         }
     }

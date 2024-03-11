@@ -1,13 +1,13 @@
-package com.valeriotor.beyondtheveil.world.map;
+package com.eternatus.modtest.world.map;
 
 import com.google.common.base.Stopwatch;
-import com.valeriotor.beyondtheveil.BeyondTheVeil;
-import com.valeriotor.beyondtheveil.item.CaveMapItem;
-import com.valeriotor.beyondtheveil.lib.ConfigLib;
-import com.valeriotor.beyondtheveil.networking.Messages.Messages;
-import com.valeriotor.beyondtheveil.networking.Messages.UpdateCaveBiomeMapTagMessage;
-import com.valeriotor.beyondtheveil.world.biome.BTVBiomeRarity;
-import com.valeriotor.beyondtheveil.world.biome.BTVBiomeRegistry;
+import com.eternatus.modtest.modtest;
+import com.eternatus.modtest.item.CaveMapItem;
+import com.eternatus.modtest.lib.ConfigLib;
+import com.eternatus.modtest.networking.Messages.Messages;
+import com.eternatus.modtest.networking.Messages.UpdateCaveBiomeMapTagMessage;
+import com.eternatus.modtest.world.biome.MTBiomeRarity;
+import com.eternatus.modtest.world.biome.MTBiomeRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.*;
@@ -55,7 +55,7 @@ public class CaveBiomeMapWorldWorker implements WorldWorkerManager.IWorker {
         this.serverLevel = serverLevel;
         this.center = center;
         ResourceKey<Biome> from = CaveMapItem.getBiomeTarget(map);
-        this.biomeResourceKey = from == null ? BTVBiomeRegistry.ABYSSAL_CHASM : from;
+        this.biomeResourceKey = from == null ? MTBiomeRegistry.ABYSSAL_CHASM : from;
         this.player = player;
         this.taskUUID = taskUUID;
         this.stopwatch = Stopwatch.createStarted(Util.TICKER);
@@ -90,12 +90,12 @@ public class CaveBiomeMapWorldWorker implements WorldWorkerManager.IWorker {
             int nextBlockZ = nextPos.getZ();
             int quartX = QuartPos.fromBlock(nextBlockX);
             int quartZ = QuartPos.fromBlock(nextBlockZ);
-            BeyondTheVeil.LOGGER.info("Pre-BTVBiomeRarity" + BTVBiomeRarity.isQuartInRareBiome(serverLevel.getSeed(),quartX,quartZ));
-            if(BTVBiomeRarity.isQuartInRareBiome(serverLevel.getSeed(), quartX, quartZ)){
+            modtest.LOGGER.info("Pre-MTBiomeRarity" + MTBiomeRarity.isQuartInRareBiome(serverLevel.getSeed(),quartX,quartZ));
+            if(MTBiomeRarity.isQuartInRareBiome(serverLevel.getSeed(), quartX, quartZ)){
                 for (int blockY : searchedHeights) {
                     int quartY = QuartPos.fromBlock(blockY);
                     Biome biome = source.getNoiseBiome(quartX, quartY, quartZ, sampler).get();
-                    BeyondTheVeil.LOGGER.info(biome.toString());
+                    modtest.LOGGER.info(biome.toString());
                     if (verifyBiomeRespectRegistry(serverLevel, biome, biomeResourceKey)) {
                         lastBiomePos = new BlockPos(nextBlockX, blockY, nextBlockZ);
                     }
@@ -135,19 +135,19 @@ public class CaveBiomeMapWorldWorker implements WorldWorkerManager.IWorker {
                 tag.putInt("BiomeZ", centered.getZ());
                 tag.putLong("RandomSeed", serverLevel.getRandom().nextLong());
                 tag.putBoolean("Filled", true);
-                BeyondTheVeil.LOGGER.info("Found {} at {} {} {} in {}s", biomeResourceKey.location(), centered.getX(), centered.getY(), centered.getZ(), stopwatch.elapsed().toSeconds());
+                modtest.LOGGER.info("Found {} at {} {} {} in {}s", biomeResourceKey.location(), centered.getX(), centered.getY(), centered.getZ(), stopwatch.elapsed().toSeconds());
             } else {
                 int distance = 0;
                 if (lastSampledPos != null) {
                     distance = (int) Math.sqrt(center.distSqr(lastSampledPos));
                 }
                 player.sendSystemMessage(Component.translatable("item.alexscaves.cave_map.error", distance).withStyle(ChatFormatting.RED));
-                BeyondTheVeil.LOGGER.info("Could not find {} after {}s", biomeResourceKey.location(), stopwatch.elapsed().toSeconds());
+                modtest.LOGGER.info("Could not find {} after {}s", biomeResourceKey.location(), stopwatch.elapsed().toSeconds());
             }
             tag.putBoolean("Loading", false);
             tag.remove("MapUUID");
             map.setTag(tag);
-            BeyondTheVeil.sendMSGToAll(new UpdateCaveBiomeMapTagMessage(player.getUUID(), getTaskUUID(), tag));
+            modtest.sendMSGToAll(new UpdateCaveBiomeMapTagMessage(player.getUUID(), getTaskUUID(), tag));
         }
         complete = true;
     }
@@ -159,10 +159,10 @@ public class CaveBiomeMapWorldWorker implements WorldWorkerManager.IWorker {
 
     private static boolean verifyBiomeRespectRegistry(Level level, Biome biome, ResourceKey<Biome> matches) {
         Optional<Registry<Biome>> biomeRegistry = Optional.of(level.registryAccess().registry(Registry.BIOME_REGISTRY).get());
-        BeyondTheVeil.LOGGER.info(biomeRegistry.toString());
+        modtest.LOGGER.info(biomeRegistry.toString());
         if (biomeRegistry.isPresent()) {
             Optional<ResourceKey<Biome>> resourceKey = biomeRegistry.get().getResourceKey(biome);
-            BeyondTheVeil.LOGGER.info(resourceKey.toString());
+            modtest.LOGGER.info(resourceKey.toString());
             return resourceKey.isPresent() && resourceKey.get().equals(matches);
         } else {
             return false;
@@ -272,7 +272,7 @@ public class CaveBiomeMapWorldWorker implements WorldWorkerManager.IWorker {
     }
 
     private boolean mapBiomeBeneathSurfaceOnly() {
-        return biomeResourceKey.equals(BTVBiomeRegistry.ABYSSAL_CHASM);
+        return biomeResourceKey.equals(MTBiomeRegistry.ABYSSAL_CHASM);
     }
 
     public UUID getTaskUUID() {

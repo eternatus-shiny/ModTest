@@ -1,4 +1,4 @@
-package com.valeriotor.beyondtheveil.world.carver;
+package com.eternatus.modtest.world.carver;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;

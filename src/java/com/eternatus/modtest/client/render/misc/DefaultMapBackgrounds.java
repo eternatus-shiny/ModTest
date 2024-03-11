@@ -1,7 +1,7 @@
-package com.valeriotor.beyondtheveil.client.render.misc;
+package com.eternatus.modtest.client.render.misc;
 
 import com.mojang.blaze3d.platform.NativeImage;
-import com.valeriotor.beyondtheveil.lib.References;
+import com.eternatus.modtest.lib.References;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.SimpleTexture;
 import net.minecraft.resources.ResourceLocation;

@@ -1,4 +1,4 @@
-package com.valeriotor.beyondtheveil.world.feature.config;
+package com.eternatus.modtest.world.feature.config;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

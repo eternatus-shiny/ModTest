@@ -1,6 +1,6 @@
-package com.valeriotor.beyondtheveil.mixin.client;
+package com.eternatus.modtest.mixin.client;
 
-import com.valeriotor.beyondtheveil.Registration;
+import com.eternatus.modtest.Registration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.AbstractTickableSoundInstance;
 import net.minecraft.client.resources.sounds.BiomeAmbientSoundsHandler;

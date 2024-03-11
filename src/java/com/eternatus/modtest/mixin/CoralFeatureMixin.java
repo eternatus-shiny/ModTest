@@ -1,7 +1,7 @@
-package com.valeriotor.beyondtheveil.mixin;
+package com.eternatus.modtest.mixin;
 
-import com.valeriotor.beyondtheveil.world.biome.BTVBiomeRegistry;
-import com.valeriotor.beyondtheveil.world.feature.FeaturePositionValidator;
+import com.eternatus.modtest.world.biome.MTBiomeRegistry;
+import com.eternatus.modtest.world.feature.FeaturePositionValidator;
 import net.minecraft.world.level.levelgen.feature.CoralFeature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,7 +19,7 @@ public class CoralFeatureMixin {
             at = @At(value = "HEAD")
     )
     private void ac_place(FeaturePlaceContext context, CallbackInfoReturnable<Boolean> cir) {
-        if (FeaturePositionValidator.isBiome(context, BTVBiomeRegistry.ABYSSAL_CHASM)) {
+        if (FeaturePositionValidator.isBiome(context, MTBiomeRegistry.ABYSSAL)) {
             cir.cancel();
         }
     }

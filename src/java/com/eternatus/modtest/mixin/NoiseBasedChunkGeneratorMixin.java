@@ -1,6 +1,6 @@
-package com.valeriotor.beyondtheveil.mixin;
+package com.eternatus.modtest.mixin;
 
-import com.valeriotor.beyondtheveil.Constants;
+import com.eternatus.modtest.Constants;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import com.valeriotor.beyondtheveil.util.SurfaceRulesManager;
+import com.eternatus.modtest.util.SurfaceRulesManager;
 
 import java.util.HashMap;
 import java.util.function.Function;

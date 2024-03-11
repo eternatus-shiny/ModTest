@@ -1,4 +1,4 @@
-package com.valeriotor.beyondtheveil.util;
+package com.eternatus.modtest.util;
 
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;

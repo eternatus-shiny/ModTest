@@ -1,4 +1,4 @@
-package com.valeriotor.beyondtheveil.util;
+package com.eternatus.modtest.util;
 
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.core.Holder;

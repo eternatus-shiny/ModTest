@@ -1,6 +1,6 @@
-package com.valeriotor.beyondtheveil.networking.Messages;
+package com.valeriotor.modtest.networking.Messages;
 
-import com.valeriotor.beyondtheveil.BeyondTheVeil;
+import com.valeriotor.modtest.ModTest;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
@@ -39,11 +39,11 @@ public class WorldEventMessage {
         context.get().enqueueWork(() -> {
             Player playerSided = context.get().getSender();
             if (context.get().getDirection().getReceptionSide() == LogicalSide.CLIENT) {
-                playerSided = BeyondTheVeil.PROXY.getClientSidePlayer();
+                playerSided = ModTest.PROXY.getClientSidePlayer();
             }
             if(playerSided.getLevel() != null){
                 BlockPos blockPos = new BlockPos(message.blockX, message.blockY, message.blockZ);
-                BeyondTheVeil.PROXY.playWorldEvent(message.messageId, playerSided.getLevel(), blockPos);
+                ModTest.PROXY.playWorldEvent(message.messageId, playerSided.getLevel(), blockPos);
             }
         });
         context.get().setPacketHandled(true);

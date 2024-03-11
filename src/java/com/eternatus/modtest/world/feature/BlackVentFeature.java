@@ -1,4 +1,4 @@
-package com.valeriotor.beyondtheveil.world.feature;
+package com.eternatus.modtest.world.feature;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;

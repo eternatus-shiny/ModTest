@@ -1,4 +1,4 @@
-package com.valeriotor.beyondtheveil.util;
+package com.eternatus.modtest.util;
 
 import com.google.common.collect.Sets;
 import net.minecraft.core.Holder;
@@ -11,7 +11,7 @@ import net.minecraft.world.level.biome.Climate;
 import net.minecraft.util.Mth;
 import java.util.Set;
 
-public class MathHelperBTV {
+public class MathHelperMT {
 
     public static int clamp(int min, int max, int val) {
         return val < min ? min : (val > max ? max : val);
@@ -40,14 +40,14 @@ public class MathHelperBTV {
     }
 
     public static float sampleNoise3D(int x, int y, int z, float simplexSampleRate) {
-        return (float) ((BTVSimplexNoise.noise((x + simplexSampleRate) / simplexSampleRate, (y + simplexSampleRate) / simplexSampleRate, (z + simplexSampleRate) / simplexSampleRate)));
+        return (float) ((MTSimplexNoise.noise((x + simplexSampleRate) / simplexSampleRate, (y + simplexSampleRate) / simplexSampleRate, (z + simplexSampleRate) / simplexSampleRate)));
     }
     public static float sampleNoise3D(float x, float y, float z, float simplexSampleRate) {
-        return (float) ((BTVSimplexNoise.noise((x + simplexSampleRate) / simplexSampleRate, (y + simplexSampleRate) / simplexSampleRate, (z + simplexSampleRate) / simplexSampleRate)));
+        return (float) ((MTSimplexNoise.noise((x + simplexSampleRate) / simplexSampleRate, (y + simplexSampleRate) / simplexSampleRate, (z + simplexSampleRate) / simplexSampleRate)));
     }
 
     public static float sampleNoise2D(int x, int z, float simplexSampleRate) {
-        return (float) ((BTVSimplexNoise.noise((x + simplexSampleRate) / simplexSampleRate, (z + simplexSampleRate) / simplexSampleRate)));
+        return (float) ((MTSimplexNoise.noise((x + simplexSampleRate) / simplexSampleRate, (z + simplexSampleRate) / simplexSampleRate)));
     }
 
     /** Returns the closest entity the player is looking at
@@ -139,7 +139,7 @@ public class MathHelperBTV {
 //        return list;
 //    }
 
-    private static class BTVSimplexNoise {
+    private static class MTSimplexNoise {
         private static final Grad[] grad3 = {new Grad(1, 1, 0), new Grad(-1, 1, 0), new Grad(1, -1, 0), new Grad(-1, -1, 0),
                 new Grad(1, 0, 1), new Grad(-1, 0, 1), new Grad(1, 0, -1), new Grad(-1, 0, -1),
                 new Grad(0, 1, 1), new Grad(0, -1, 1), new Grad(0, 1, -1), new Grad(0, -1, -1)};

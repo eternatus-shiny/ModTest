@@ -1,16 +1,16 @@
-package com.valeriotor.beyondtheveil.event;
+package com.eternatus.modtest.event;
 
 
 import com.mojang.logging.LogUtils;
-import com.valeriotor.beyondtheveil.BeyondTheVeil;
-import com.valeriotor.beyondtheveil.Registration;
-import com.valeriotor.beyondtheveil.entity.FletumEntity;
-import com.valeriotor.beyondtheveil.entity.HamletDwellerEntity;
-import com.valeriotor.beyondtheveil.lib.BiomeConfig;
-import com.valeriotor.beyondtheveil.lib.References;
-import com.valeriotor.beyondtheveil.util.EventReplaceBiome;
-import com.valeriotor.beyondtheveil.util.ExpandedBiomeSource;
-import com.valeriotor.beyondtheveil.world.biome.BTVBiomeRarity;
+import com.eternatus.modtest.ModTest;
+import com.eternatus.modtest.Registration;
+import com.eternatus.modtest.entity.FletumEntity;
+import com.eternatus.modtest.entity.HamletDwellerEntity;
+import com.eternatus.modtest.lib.BiomeConfig;
+import com.eternatus.modtest.lib.References;
+import com.eternatus.modtest.util.EventReplaceBiome;
+import com.eternatus.modtest.util.ExpandedBiomeSource;
+import com.eternatus.modtest.world.biome.MTBiomeRarity;
 import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.core.Holder;
@@ -42,26 +42,6 @@ import java.util.List;
 @Mod.EventBusSubscriber(modid = References.MODID)
 public class ModEvents {
     private static final Logger LOGGER = LogUtils.getLogger();
-
-//    @SubscribeEvent
-//    public static void addTradesHamlet(VillagerTradesEvent trade){
-//        if(trade.getType().equals(HamletDwellerEntity.ProfessionsEnum.BARTENDER)){
-//            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = trade.getTrades();
-//        }
-//    }
-
-    @SubscribeEvent
-    public static void EntityJoined(EntityJoinLevelEvent event){
-        Entity entity = event.getEntity();
-        if(entity instanceof Villager){
-            Villager villager = (Villager) entity;
-            ((Villager) event.getEntity()).goalSelector.addGoal(10, new AvoidEntityGoal<>(villager, HamletDwellerEntity.class,8.0F,0.5D, 0.5D));
-            ((Villager) event.getEntity()).goalSelector.addGoal(10, new AvoidEntityGoal<>(villager, FletumEntity.class,8.0F,0.5D, 0.5D));
-        } else if (entity instanceof Drowned) {
-            Drowned villager = (Drowned) entity;
-            ((Drowned) event.getEntity()).goalSelector.addGoal(10, new AvoidEntityGoal<>(villager, HamletDwellerEntity.class,8.0F,0.5D, 0.5D));
-        }
-    }
 
     @SubscribeEvent
     public void onReplaceBiome(EventReplaceBiome event) {

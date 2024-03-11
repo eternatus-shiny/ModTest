@@ -1,8 +1,8 @@
-package com.valeriotor.beyondtheveil.world.feature;
+package com.eternatus.modtest.world.feature;
 
 import com.mojang.serialization.Codec;
-import com.valeriotor.beyondtheveil.Registration;
-import com.valeriotor.beyondtheveil.lib.References;
+import com.eternatus.modtest.Registration;
+import com.eternatus.modtest.lib.References;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;

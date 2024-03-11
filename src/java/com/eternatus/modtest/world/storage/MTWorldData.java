@@ -1,6 +1,6 @@
-package com.valeriotor.beyondtheveil.world.storage;
+package com.eternatus.modtest.world.storage;
 
-import com.valeriotor.beyondtheveil.world.map.CaveBiomeMapWorldWorker;
+import com.eternatus.modtest.world.map.CaveBiomeMapWorldWorker;
 import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -19,30 +19,30 @@ import net.minecraftforge.common.WorldWorkerManager;
 import javax.annotation.Nullable;
 import java.util.*;
 import java.util.stream.Collectors;
-public class BTVWorldData extends SavedData {
-    private static Map<MinecraftServer, BTVWorldData> dataMap = new HashMap<>();
+public class MTWorldData extends SavedData {
+    private static Map<MinecraftServer, MTWorldData> dataMap = new HashMap<>();
 
     private MinecraftServer server;
-    private static final String IDENTIFIER = "beyondtheveil_world_data";
-    private static final String IDENTIFIER_server = "beyondtheveil_server_data";
+    private static final String IDENTIFIER = "modtest_world_data";
+    private static final String IDENTIFIER_server = "modtest_server_data";
     private CaveBiomeMapWorldWorker lastMapWorker = null;
 
-    private BTVWorldData(){
+    private MTWorldData(){
         super();
     }
 
-    public BTVWorldData(MinecraftServer server){
+    public MTWorldData(MinecraftServer server){
         super();
         this.server = server;
     }
 
 
-    public static BTVWorldData get(Level pLevel){
+    public static MTWorldData get(Level pLevel){
         if(pLevel instanceof ServerLevel){
             ServerLevel overworld = pLevel.getServer().getLevel(Level.OVERWORLD);
             assert overworld != null;
             DimensionDataStorage storage = overworld.getDataStorage();
-            BTVWorldData data = storage.computeIfAbsent(BTVWorldData::load, BTVWorldData::new, IDENTIFIER);
+            MTWorldData data = storage.computeIfAbsent(MTWorldData::load, MTWorldData::new, IDENTIFIER);
             if(data != null){
                 data.setDirty();
             }
@@ -51,11 +51,11 @@ public class BTVWorldData extends SavedData {
         return null;
     }
 
-    public static BTVWorldData get(MinecraftServer server){
-        BTVWorldData fromMap = dataMap.get(server);
+    public static MTWorldData get(MinecraftServer server){
+        MTWorldData fromMap = dataMap.get(server);
         if(fromMap == null){
             DimensionDataStorage storage = server.getLevel(Level.OVERWORLD).getDataStorage();
-            BTVWorldData data = storage.computeIfAbsent((tag) -> load(server, tag), () -> new BTVWorldData(server), IDENTIFIER_server);
+            MTWorldData data = storage.computeIfAbsent((tag) -> load(server, tag), () -> new MTWorldData(server), IDENTIFIER_server);
             if (data != null) {
                 data.setDirty();
             }
@@ -65,13 +65,13 @@ public class BTVWorldData extends SavedData {
         return fromMap;
     }
 
-    public static BTVWorldData load(CompoundTag nbt) {
-        BTVWorldData data = new BTVWorldData();
+    public static MTWorldData load(CompoundTag nbt) {
+        MTWorldData data = new MTWorldData();
         return data;
     }
 
-    public static BTVWorldData load(MinecraftServer server, CompoundTag tag) {
-        BTVWorldData data = new BTVWorldData(server);
+    public static MTWorldData load(MinecraftServer server, CompoundTag tag) {
+        MTWorldData data = new MTWorldData(server);
         return data;
     }
 

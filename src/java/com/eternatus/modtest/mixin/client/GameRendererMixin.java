@@ -1,7 +1,7 @@
-package com.valeriotor.beyondtheveil.mixin.client;
+package com.eternatus.modtest.mixin.client;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.valeriotor.beyondtheveil.BeyondTheVeil;
-import com.valeriotor.beyondtheveil.networking.proxy.ClientProxy;
+import com.eternatus.modtest.modtest;
+import com.eternatus.modtest.networking.proxy.ClientProxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -36,6 +36,6 @@ public class GameRendererMixin {
             )
     )
     public void ac_render(float partialTick, long nanos, boolean idk, CallbackInfo ci) {
-        ((ClientProxy) BeyondTheVeil.PROXY).preScreenRender(partialTick);
+        ((ClientProxy) ModTest.PROXY).preScreenRender(partialTick);
     }
 }

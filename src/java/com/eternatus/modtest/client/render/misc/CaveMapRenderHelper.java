@@ -1,6 +1,6 @@
-package com.valeriotor.beyondtheveil.client.render.misc;
+package com.eternatus.modtest.client.render.misc;
 
-import com.valeriotor.beyondtheveil.client.render.BTVRenderType;
+import com.eternatus.modtest.client.render.MTRenderType;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -48,7 +48,7 @@ public class CaveMapRenderHelper {
         poseStack.scale(0.38F, 0.38F, 0.38F);
         poseStack.translate(-0.5F, -0.5F, 0.0F);
         poseStack.scale(0.0078125F, 0.0078125F, 0.0078125F);
-        VertexConsumer vertexconsumer = multiBufferSource.getBuffer(BTVRenderType.getCaveMapBackground(CaveMapRenderer.MAP_BACKGROUND, showBackground));
+        VertexConsumer vertexconsumer = multiBufferSource.getBuffer(MTRenderType.getCaveMapBackground(CaveMapRenderer.MAP_BACKGROUND, showBackground));
         Matrix4f matrix4f = poseStack.last().pose();
         vertexconsumer.vertex(matrix4f, -7.0F, 135.0F, 0.0F).color(255, 255, 255, 255).uv(0.0F, 1.0F).uv2(light).endVertex();
         vertexconsumer.vertex(matrix4f, 135.0F, 135.0F, 0.0F).color(255, 255, 255, 255).uv(1.0F, 1.0F).uv2(light).endVertex();

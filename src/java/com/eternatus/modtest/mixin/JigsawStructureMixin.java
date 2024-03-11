@@ -1,7 +1,7 @@
-package com.valeriotor.beyondtheveil.mixin;
+package com.eternatus.modtest.mixin;
 
-import com.valeriotor.beyondtheveil.Registration;
-import com.valeriotor.beyondtheveil.util.MathHelperBTV;
+import com.eternatus.modtest.Registration;
+import com.eternatus.modtest.util.MathHelperMT;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
@@ -32,7 +32,7 @@ public class JigsawStructureMixin {
             int i = context.chunkPos().getBlockX(9);
             int j = context.chunkPos().getBlockZ(9);
 
-            for (Holder<Biome> holder : MathHelperBTV.getBiomesWithinAtY(context.biomeSource(), i, context.chunkGenerator().getSeaLevel() - 80, j, 80, context.randomState().sampler())) {
+            for (Holder<Biome> holder : MathHelperMT.getBiomesWithinAtY(context.biomeSource(), i, context.chunkGenerator().getSeaLevel() - 80, j, 80, context.randomState().sampler())) {
                 if (holder.is(Registration.HAS_NO_ANCIENT_CITIES_IN)) {
                     cir.setReturnValue(Optional.empty());
                 }

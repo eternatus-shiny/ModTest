@@ -1,6 +1,6 @@
-package com.valeriotor.beyondtheveil.util;
+package com.eternatus.modtest.util;
 
-import com.valeriotor.beyondtheveil.world.biome.BTVBiomeRarity;
+import com.eternatus.modtest.world.biome.MTBiomeRarity;
 import net.minecraft.core.QuartPos;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.phys.Vec3;
@@ -39,7 +39,7 @@ public class BiomeGenerationNoiseCondition {
         if (!isFarEnoughFromSpawn(event, distanceFromSpawn)) {
             return false;
         }
-        Vec3 rareBiomeCenter = BTVBiomeRarity.getRareBiomeCenter(info);
+        Vec3 rareBiomeCenter = MTBiomeRarity.getRareBiomeCenter(info);
         if (rareBiomeCenter == null) {
             return false;
         }

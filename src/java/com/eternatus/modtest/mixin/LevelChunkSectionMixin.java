@@ -1,6 +1,6 @@
-package com.valeriotor.beyondtheveil.mixin;
+package com.eternatus.modtest.mixin;
 
-import com.valeriotor.beyondtheveil.util.ILevelChunkSectionMixin;
+import com.eternatus.modtest.util.ILevelChunkSectionMixin;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.chunk.LevelChunkSection;

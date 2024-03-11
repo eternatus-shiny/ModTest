@@ -1,4 +1,4 @@
-package com.valeriotor.beyondtheveil.client.render.item;
+package com.eternatus.modtest.client.render.item;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -7,13 +7,13 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.math.Vector3f;
-import com.valeriotor.beyondtheveil.Registration;
-import com.valeriotor.beyondtheveil.client.render.BTVRenderType;
-import com.valeriotor.beyondtheveil.item.CaveMapItem;
-import com.valeriotor.beyondtheveil.client.render.misc.CaveMapRenderHelper;
-import com.valeriotor.beyondtheveil.client.render.misc.CaveMapRenderer;
-import com.valeriotor.beyondtheveil.client.render.misc.DefaultMapBackgrounds;
-import com.valeriotor.beyondtheveil.lib.ConfigLib;
+import com.eternatus.modtest.Registration;
+import com.eternatus.modtest.client.render.MTRenderType;
+import com.eternatus.modtest.item.CaveMapItem;
+import com.eternatus.modtest.client.render.misc.CaveMapRenderHelper;
+import com.eternatus.modtest.client.render.misc.CaveMapRenderer;
+import com.eternatus.modtest.client.render.misc.DefaultMapBackgrounds;
+import com.eternatus.modtest.lib.ConfigLib;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -46,9 +46,9 @@ import java.util.List;
 import static net.minecraft.core.BlockPos.getX;
 import static net.minecraft.core.BlockPos.getY;
 
-public class BTVItemstackRenderer extends BlockEntityWithoutLevelRenderer {
+public class MTItemstackRenderer extends BlockEntityWithoutLevelRenderer {
     public static boolean sepiaFlag = false;
-    public BTVItemstackRenderer() {
+    public MTItemstackRenderer() {
         super(null, null);
     }
 
@@ -113,7 +113,7 @@ public class BTVItemstackRenderer extends BlockEntityWithoutLevelRenderer {
         @Expose(serialize = false, deserialize = false)
         private ItemStack actualItem = ItemStack.EMPTY;
 
-        private static final RenderType SEPIA_ITEM_RENDER_TYPE = BTVRenderType.getBookWidget(TextureAtlas.LOCATION_BLOCKS, true);
+        private static final RenderType SEPIA_ITEM_RENDER_TYPE = MTRenderType.getBookWidget(TextureAtlas.LOCATION_BLOCKS, true);
 
         public ItemWidget(int displayPage, String item, String nbt, boolean sepia, int x, int y, float scale) {
             super(displayPage, Type.ITEM, x, y, scale);
@@ -160,7 +160,7 @@ public class BTVItemstackRenderer extends BlockEntityWithoutLevelRenderer {
                 } else {
                     poseStack.mulPose(Vector3f.ZN.rotationDegrees(180F));
                     poseStack.scale(-1F, 1F, 1F);
-                    BTVItemstackRenderer.sepiaFlag = true;
+                    MTItemstackRenderer.sepiaFlag = true;
                 }
                 if (sepia && !bakedmodel.isCustomRenderer()) {
                     renderSepiaItem(poseStack, bakedmodel, itemStack, bufferSource);
@@ -168,7 +168,7 @@ public class BTVItemstackRenderer extends BlockEntityWithoutLevelRenderer {
                     Minecraft.getInstance().getItemRenderer().render(itemStack, ItemTransforms.TransformType.GUI, false, poseStack, bufferSource, 240, OverlayTexture.NO_OVERLAY, bakedmodel);
                 }
                 if (sepia) {
-                    BTVItemstackRenderer.sepiaFlag = false;
+                    MTItemstackRenderer.sepiaFlag = false;
                 }
             } catch (Exception e) {
                 e.printStackTrace();

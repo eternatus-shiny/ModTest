@@ -1,19 +1,19 @@
-package com.valeriotor.beyondtheveil.world.worldgen.surface;
-import com.valeriotor.beyondtheveil.Registration;
-import com.valeriotor.beyondtheveil.util.SurfaceRulesManager;
-import com.valeriotor.beyondtheveil.world.biome.BTVBiomeRegistry;
+package com.eternatus.modtest.world.worldgen.surface;
+import com.eternatus.modtest.Registration;
+import com.eternatus.modtest.util.SurfaceRulesManager;
+import com.eternatus.modtest.world.biome.MTBiomeRegistry;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 
-public class BTVSurfaceRules {
+public class MTSurfaceRules {
 
     public static void setup() {
-        SurfaceRulesManager.registerOverworldSurfaceRule(SurfaceRules.isBiome(BTVBiomeRegistry.ABYSSAL_CHASM), createAbyssalChasmRules());
+        SurfaceRulesManager.registerOverworldSurfaceRule(SurfaceRules.isBiome(MTBiomeRegistry.ABYSSA), createAbyssalRules());
     }
-    public static SurfaceRules.RuleSource createAbyssalChasmRules() {
-        SurfaceRules.RuleSource abyssmarine = SurfaceRules.state(Registration.DAMP_STONE.get().defaultBlockState());
+    public static SurfaceRules.RuleSource createAbyssalRules() {
+        SurfaceRules.RuleSource abyssmarine = SurfaceRules.state(Registration.STONE.get().defaultBlockState());
         SurfaceRules.RuleSource deepslate = SurfaceRules.state(Blocks.DEEPSLATE.defaultBlockState());
         SurfaceRules.RuleSource stone = SurfaceRules.state(Blocks.STONE.defaultBlockState());
         SurfaceRules.ConditionSource normalDeepslateCondition = SurfaceRules.verticalGradient("deepslate", VerticalAnchor.absolute(0), VerticalAnchor.absolute(8));

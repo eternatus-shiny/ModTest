@@ -1,5 +1,5 @@
-package com.valeriotor.beyondtheveil.mixin;
-import com.valeriotor.beyondtheveil.world.biome.BTVBiomeRegistry;
+package com.eternatus.modtest.mixin;
+import com.eternatus.modtest.world.biome.MTBiomeRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.structure.Structure;
@@ -24,7 +24,7 @@ public class OceanMonumentStructureMixin {
         int j = context.chunkPos().getBlockZ(9);
 
         for (Holder<Biome> holder : context.biomeSource().getBiomesWithin(i, context.chunkGenerator().getSeaLevel() - 80, j, 29, context.randomState().sampler())) {
-            if (holder.is(BTVBiomeRegistry.ABYSSAL_CHASM)) {
+            if (holder.is(MTBiomeRegistry.ABYSSAL)) {
                 cir.setReturnValue(Optional.empty());
             }
         }

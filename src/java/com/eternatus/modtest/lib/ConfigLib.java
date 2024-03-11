@@ -1,4 +1,4 @@
-package com.valeriotor.beyondtheveil.lib;
+package com.eternatus.modtest.lib;
 
 import com.electronwill.nightconfig.core.Config;
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
@@ -13,12 +13,6 @@ import java.io.File;
 
 public class ConfigLib {
 //    //TODO implement config
-//    public static int innsmouthWeight, archeId;
-//    public static int connectionRed = 0;
-//    public static int connectionGreen = 32;
-//    public static int connectionBlue = 0;
-    public static ForgeConfigSpec.ConfigValue<Integer> crucibleDamage;
-    public static ForgeConfigSpec.ConfigValue<Integer> crucibleCooldown;
     public static ForgeConfigSpec.ConfigValue<Double> caveBiomeMeanWidth;
     public static  ForgeConfigSpec.ConfigValue<Integer> caveBiomeMeanSeparation;
     public static ForgeConfigSpec.ConfigValue<Double> caveBiomeWidthRandomness;
@@ -31,18 +25,6 @@ public class ConfigLib {
     public static ForgeConfigSpec.ConfigValue<Boolean> biomeSkyFogOverrides;
     public static ForgeConfigSpec.ConfigValue<Boolean> biomeWaterFogOverrides;
     public static ForgeConfigSpec.ConfigValue<Boolean> caveMapsVisibleInThirdPerson;
-//    public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
-//    public static final ForgeConfigSpec SPEC;
-//
-//    static {
-//        BUILDER.push("BEYOND THE VEIL CONFIGS");
-//
-//        crucibleDamage = BUILDER.comment("The damage dealt by the Crucible. Min: 1, Max: 1000, Default: 100").defineInRange("Crucible Damage",100,1,1000);
-//        crucibleCooldown = BUILDER.comment("The cooldown, in seconds, for the Crucible to be reused. Min: 5, Max: 10000, Default: 120").defineInRange("Crucible Cooldown",120,5,10000);
-//
-//        BUILDER.pop();
-//        SPEC = BUILDER.build();
-//    }
 
     public static CommentedFileConfig cfg;
     public static CommentedFileConfig cfg_client;
@@ -69,11 +51,9 @@ public class ConfigLib {
     }
 
     private void Config_client() {
-        BUILDER_CLIENT.push("BEYOND THE VEIL CONFIGS");
+        BUILDER_CLIENT.push("");
         BUILDER_CLIENT.comment("""
-                Configuration file for the Beyond the Veil mod.
-                Created by Valeriotor.
-                Port to 1.19.2 by Parritoso
+                Configuration file
                 """);
         BUILDER_CLIENT.pop();
         BUILDER_CLIENT.push("VISUALS");
@@ -93,27 +73,10 @@ public class ConfigLib {
         caveBiomeSpacingRandomness = BUILDER.comment("Average spacing in between abyssal Chasm biomes. 0 = all biomes nearly perfectly equidistant. 1 = biomes completely randomly spread out, sometimes next to eachother.").defineInRange("cave_biome_spacing_randomness", 0.45D, 0, 1D);
         BUILDER.pop();
 
-        BUILDER.push("BEYOND THE VEIL CONFIGS");
+        BUILDER.push("");
         BUILDER.comment("""
-                Configuration file for the Beyond the Veil mod.
-                Created by Valeriotor.
-                Port to 1.19.2 by Parritoso
+                Configuration file
                 """);
-        crucibleDamage = BUILDER.comment("The damage dealt by the Crucible.").comment("Min: 1, Max: 1000, Default: 100").defineInRange("Crucible Damage",100,1,1000);
-        crucibleCooldown = BUILDER.comment("The cooldown, in seconds, for the Crucible to be reused.").comment("Min: 5, Max: 10000, Default: 120").defineInRange("Crucible Cooldown",120,5,10000);
         caveMapSearchAttempts = BUILDER.comment("How many attempts to find a biome a cave map engages in when used. Increase this to increase the search radius, or decrease it to make them faster.").defineInRange("cave_map_search_attempts", 128000, 64, Integer.MAX_VALUE);
         caveMapSearchWidth = BUILDER.comment("How wide each search attempt scans for a biome. Increasing this generally makes cave biome maps faster - at the cost of losing fidelity(may skip biomes smaller than this in block width).").defineInRange("cave_map_search_width", 64, 4, 256);
-//        BUILDER.comment("""
-//=============================================================================================================
-//
-//
-//
-//""");
-//        BUILDER.comment("""
-//=============================================================================================================
-//
-//
-//
-//""");
-    }
 }

@@ -1,8 +1,8 @@
-package com.valeriotor.beyondtheveil.mixin;
+package com.eternatus.modtest.mixin;
 
 import com.google.common.base.Suppliers;
 import com.google.common.collect.ImmutableSet;
-import com.valeriotor.beyondtheveil.util.ExpandedBiomeSource;
+import com.eternatus.modtest.util.ExpandedBiomeSource;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;

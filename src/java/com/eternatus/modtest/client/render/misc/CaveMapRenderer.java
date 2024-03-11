@@ -1,15 +1,15 @@
-package com.valeriotor.beyondtheveil.client.render.misc;
+package com.eternatus.modtest.client.render.misc;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.math.Matrix4f;
 import com.mojang.math.Vector3f;
-import com.valeriotor.beyondtheveil.Registration;
+import com.eternatus.modtest.Registration;
 import net.minecraft.util.FastColor;
-import com.valeriotor.beyondtheveil.item.CaveMapItem;
-import com.valeriotor.beyondtheveil.lib.References;
-import com.valeriotor.beyondtheveil.world.biome.BTVBiomeRegistry;
+import com.eternatus.modtest.item.CaveMapItem;
+import com.eternatus.modtest.lib.References;
+import com.eternatus.modtest.world.biome.MTBiomeRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -181,7 +181,7 @@ public class CaveMapRenderer {
     }
 
     private int getBiomeColor(Holder<Biome> biome, int u, int v) {
-        if (biome.is(BTVBiomeRegistry.ABYSSAL_CHASM)) {
+        if (biome.is(MTBiomeRegistry.ABYSSAL_CHASM)) {
             return DefaultMapBackgrounds.ABYSSAL_CHASM.getMapColor(u, v);
         }
         if (biome.is(Tags.Biomes.IS_SNOWY) && biome.is(BiomeTags.IS_OCEAN)) {

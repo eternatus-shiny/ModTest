@@ -1,7 +1,7 @@
-package com.valeriotor.beyondtheveil.networking.Messages;
+package com.valeriotor.modtest.networking.Messages;
 
-import com.valeriotor.beyondtheveil.BeyondTheVeil;
-import com.valeriotor.beyondtheveil.Registration;
+import com.valeriotor.modtest.ModTest;
+import com.valeriotor.modtest.Registration;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
@@ -38,7 +38,7 @@ public class UpdateCaveBiomeMapTagMessage {
         context.get().setPacketHandled(true);
         Player playerSided = context.get().getSender();
         if (context.get().getDirection().getReceptionSide() == LogicalSide.CLIENT) {
-            playerSided = BeyondTheVeil.PROXY.getClientSidePlayer();
+            playerSided = ModTest.PROXY.getClientSidePlayer();
         }
         if(playerSided != null){
             Player player = playerSided.getLevel().getPlayerByUUID(message.userUUID);

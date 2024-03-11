@@ -1,7 +1,7 @@
-package com.valeriotor.beyondtheveil.networking.Messages;
+package com.modtest.modtest.networking.Messages;
 
-import com.valeriotor.beyondtheveil.BeyondTheVeil;
-import com.valeriotor.beyondtheveil.item.UpdateStackTags;
+import com.modtest.modtest.ModTest;
+import com.modtest.modtest.item.UpdateStackTags;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -36,7 +36,7 @@ public class UpdateItemTagMessage {
         context.get().setPacketHandled(true);
         Player playerSided = context.get().getSender();
         if (context.get().getDirection().getReceptionSide() == LogicalSide.CLIENT) {
-            playerSided = BeyondTheVeil.PROXY.getClientSidePlayer();
+            playerSided = ModTest.PROXY.getClientSidePlayer();
         }
         if(playerSided != null){
 
