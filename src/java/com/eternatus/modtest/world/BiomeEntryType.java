@@ -1,4 +1,4 @@
-package com.valeriotor.beyondtheveil.world;
+package com.eternatus.modtest.world;
 
 public enum BiomeEntryType {
     REGISTRY_NAME(false), BIOME_TAG(false), BIOME_DICT(true), BIOME_CATEGORY(true);
