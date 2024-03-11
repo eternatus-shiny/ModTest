@@ -1,10 +1,10 @@
-package com.valeriotor.beyondtheveil.world;
+package com.eternatus.modtest.world;
 
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.valeriotor.beyondtheveil.BeyondTheVeil;
+import com.eternatus.modtest.ModTest;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.commons.io.FileUtils;
